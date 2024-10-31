@@ -22,7 +22,7 @@ const tableData = [
   },
   {
     date: '主要植株',
-     address: '仙人掌',
+     address: 'Herb',
   },
   {
     date: '生长高度',

@@ -1,0 +1,22 @@
+[
+    {
+      "date": "土壤温度",
+      "name": "13℃",
+      "address": "正常"
+    },
+    {
+      "date": "土壤湿度",
+      "name": "20",
+      "address": "正常"
+    },
+    {
+      "date": "电导率",
+      "name": "",
+      "address": "无"
+    },
+    {
+      "date": "ph值",
+      "name": "",
+      "address": "无"
+    }
+  ]

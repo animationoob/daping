@@ -6,39 +6,17 @@
       style="width: 90%"
       :header-cell-style="{ 'background-color': 'transparent', 'color': 'white' }"
     >
-      <el-table-column prop="date" label="属性" width="100" />
-      <el-table-column prop="name" label="数值" width="100" />
+      <el-table-column prop="date" label="属性" width="150" />
+      <el-table-column prop="name" label="数值" width="150" />
       <el-table-column prop="address" label="其他" />
     </el-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-const tableData = [
-  {
-    date: '土壤温度',
-    name: '13℃',
-    address: '无',
-  },
-  {
-    date: '土壤湿度',
-    name: '20',
-    address: '无',
-  },
-  {
-    date: '电导率',
-    name: '',
-    address: '无',
-  },
-  {
-    date: 'ph值',
-    name: '',
-    address: '无',
-  },
+import tableDataJson from '@/assets/shangqing.json' // 导入tableData.json文件
 
-
-  // ... 其他数据项
-];
+const tableData = tableDataJson; // 使用导入的JSON数据
 </script>
 
 <style scoped>
