@@ -2,16 +2,12 @@
 import { onUnmounted, onMounted, ref, defineProps } from 'vue';
 import * as Ayame from '@open-ayame/ayame-web-sdk/dist/ayame.min.js';
 
-console.log(Ayame);
-
-
 const options = Ayame.defaultOptions;
 
 let videoCodec;
 let conn;
 let reConnect = true;
 const remoteVideoElement = ref(null);
-const videoCodecElement = ref(null);
 
 
 const props = defineProps({
@@ -32,21 +28,26 @@ const disconnect = () => {
 }
 
 const startConn = async () => {
+  try {
     reConnect = true;
     options.video.codec = videoCodec;
     conn = Ayame.connection(props.signalingUrl, props.roomId, options, true);
     await conn.connect(null);
-    conn.on('open', ({ authzMetadata }) => console.log(authzMetadata));
-    conn.on('disconnect', async (e) => {
-        console.log(e);
-        remoteVideoElement.value.srcObject = null;
-        if (reConnect) {
-            await conn.connect(null);
-        }
+    conn.on("open", ({ authzMetadata }) => console.log("连接打开：",authzMetadata));
+    conn.on("disconnect", async (e) => {
+      console.log(e);
+      remoteVideoElement.value.srcObject = null;
+      if (reConnect) {
+        await conn.connect(null);
+      }
     });
-    conn.on('addstream', (e) => {
-        remoteVideoElement.value.srcObject = e.stream;
+    conn.on("addstream", (e) => {
+      remoteVideoElement.value.srcObject = e.stream;
     });
+  } catch (error) {
+    console.error("连接失败:", error);
+    // 这里可以添加更多的错误处理逻辑
+  }
 };
 
 onMounted(() => {
@@ -62,7 +63,7 @@ onUnmounted(() => {
 
 <template>
     <div style="height: 100%;width: 100%;display: flex;">
-        <video id="remote-video" autoplay playsinline controls></video>
+        <video id="remote-video" autoplay playsinline controls ref="remoteVideoElement"></video>
     </div>
 </template>
 

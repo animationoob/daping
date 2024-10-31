@@ -17,44 +17,25 @@
 const tableData = [
   {
     date: '土壤温度',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    name: '13℃',
+    address: '无',
   },
   {
     date: '土壤湿度',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    name: '20',
+    address: '无',
   },
   {
     date: '电导率',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    name: '',
+    address: '无',
   },
   {
     date: 'ph值',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    name: '',
+    address: '无',
   },
-  {
-    date: '其他，可添加',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
+
 
   // ... 其他数据项
 ];

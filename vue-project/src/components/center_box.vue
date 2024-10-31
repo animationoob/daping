@@ -15,9 +15,18 @@ import chart_down from '@/components/chart_down.vue'
                 <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId1" :clientId="utils.clientId" />
             </dv-border-box8>
         </div>
-        <div class="topright">
+        <!-- <div class="topright">
             <dv-border-box8>
                 <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId2" :clientId="utils.clientId" />
+            </dv-border-box8>
+        </div> -->
+        <div class="topright">
+            <dv-border-box8>
+                <div style="margin-top: 5px;margin-left: 15px;margin-bottom: 15px;">
+                    <chart_grass></chart_grass>
+                    <echarts></echarts>
+                </div>
+
             </dv-border-box8>
         </div>
     </div>
@@ -29,11 +38,7 @@ import chart_down from '@/components/chart_down.vue'
         </div>
         <div class="bottomright">
             <dv-border-box8>
-                <div style="margin-top: 5px;margin-left: 15px;margin-bottom: 15px;">
-                    <chart_grass></chart_grass>
-                    <echarts></echarts>
-                </div>
-
+                <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId2" :clientId="utils.clientId" />
             </dv-border-box8>
         </div>
     </div>

@@ -112,7 +112,7 @@
   
   .chart-container {
     /* 确保图表容器填满分配给它的网格空间 */
-    height: 100%;
+    height: 50%;
     width: 100%;
   }
   

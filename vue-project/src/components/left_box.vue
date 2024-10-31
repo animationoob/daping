@@ -83,7 +83,7 @@ const data2 = ref([
                 <strong style="color: orange;font-style: italic; text-shadow: 2px 2px 4px #000000;">信息发布</strong>
             </div>
             <div style="margin-top: 5px;margin-left: 15px;margin-bottom: 15px;">
-                <div style="color: orange;font-size: 10px; text-align: left;">你好。。。。。。。。。</div>
+                <div style="color: orange;font-size: 10px; text-align: left;">2024年10月18日，建设草原生态监测站</div>
             </div>
         </dv-border-box1>
     </div>
