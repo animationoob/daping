@@ -21,9 +21,6 @@ import chart_tem from '@/components/chart_tem.vue'
         
         <dv-border-box8  style="display: flex;height: 100%;">
             <wenList></wenList>
-            <div dv-bg>
-                dv-border-box7
-            </div>
             <chart_tem></chart_tem>
         </dv-border-box8>
     </div>
