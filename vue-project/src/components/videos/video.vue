@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { onUnmounted, onMounted, ref, defineProps } from 'vue';
+<script setup lang="js">
+import { onUnmounted, onMounted, ref, defineProps, h } from 'vue';
 import * as Ayame from '@open-ayame/ayame-web-sdk/dist/ayame.min.js';
 
 const options = Ayame.defaultOptions;
@@ -13,7 +13,11 @@ const remoteVideoElement = ref(null);
 const props = defineProps({
   signalingUrl: String,
   roomId: String,
-  clientId: String
+  clientId: String,
+  height: {
+    type: Number,
+    default: 80
+  }
 });
 
 options.clientId = props.clientId ? props.clientId : options.clientId;
@@ -21,10 +25,10 @@ options.video.direction = 'recvonly';
 options.audio.direction = 'recvonly';
 
 const disconnect = () => {
-    reConnect = false;
-    if (conn) {
-        conn.disconnect();
-    }
+  reConnect = false;
+  if (conn) {
+    conn.disconnect();
+  }
 }
 
 const startConn = async () => {
@@ -33,10 +37,12 @@ const startConn = async () => {
     options.video.codec = videoCodec;
     conn = Ayame.connection(props.signalingUrl, props.roomId, options, true);
     await conn.connect(null);
-    conn.on("open", ({ authzMetadata }) => console.log("连接打开：",authzMetadata));
+    conn.on("open", ({ authzMetadata }) => console.log("连接打开", authzMetadata));
     conn.on("disconnect", async (e) => {
       console.log(e);
-      remoteVideoElement.value.srcObject = null;
+      if (remoteVideoElement.value) {
+        remoteVideoElement.value.srcObject = null;
+      }
       if (reConnect) {
         await conn.connect(null);
       }
@@ -51,22 +57,25 @@ const startConn = async () => {
 };
 
 onMounted(() => {
-    startConn();
+  startConn();
 });
 
 onUnmounted(() => {
-    if (conn) {
-        disconnect(); 
-    }
+  if (conn) {
+    disconnect();
+  }
 });
 </script>
 
 <template>
-    <div style="height: 100%;width: 100%;display: flex;">
-        <video id="remote-video" autoplay playsinline controls ref="remoteVideoElement"></video>
-    </div>
+  <div class="vedio-p" :style="{ height: props.height + '%' }">
+    <video id="remote-video" autoplay playsinline controls ref="remoteVideoElement"></video>
+  </div>
 </template>
 
 <style scoped lang="scss">
-/* 你的样式代码 */
+.vedio-p {
+  display: flex;
+  margin-left: 10%;
+}
 </style>

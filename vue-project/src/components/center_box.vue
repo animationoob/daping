@@ -1,81 +1,231 @@
-
-
 <script setup lang="js">
+import { ref } from 'vue'
 import utils from '@/components/videos/video.js'
 import Video from '@/components/videos/video.vue'
-import chart_grass from '@/components/chart_grass.vue'
-import MapContainer from '@/components/MapContainer.vue'
-import echarts from '@/components/echarts.vue'
-import chart_down from '@/components/chart_down.vue'
+import MapContainer from '@/components/groups/MapContainer.vue';
+import Table from '@/components/Lists/table.vue'
+import group1 from '@/components/groups/group1.vue';
+import shangqingJson from '@/assets/shangqing.json';
+
+const data = ref(shangqingJson)
 </script>
+
 <template>
     <div class="top">
-        <div class="topleft">
-            <dv-border-box8>
-                <!-- <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId1" :clientId="utils.clientId" /> -->
-            </dv-border-box8>
-        </div>
-
-        <div class="topright">
-            <dv-border-box8>
-                <div style="margin-top: 5px;margin-left: 15px;margin-bottom: 15px;">
-                    <chart_grass></chart_grass>
-                    <echarts></echarts>
+        <dv-border-box12 style="margin-top: 10px">
+            <div class="top_left">
+                <div class="top_left_title">
+                    <strong style="
+              margin-right: 20%;
+              color: orange;
+              font-style: italic;
+              text-shadow: 2px 2px 4px #000000;
+              font-size: 17px;
+            ">实时监控一</strong>
                 </div>
-
-            </dv-border-box8>
-        </div>
+                <div style="height: 77%; width: 100%; padding: 0; display: flex">
+                    <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId1" :clientId="utils.clientId"
+                        :height="100" />
+                </div>
+            </div>
+            <div class="top_right">
+                <div class="top_right_title">
+                    <strong style="
+              margin-left: 20%;
+              color: orange;
+              font-style: italic;
+              text-shadow: 2px 2px 4px #000000;
+              font-size: 17px;
+            ">生态量监测</strong>
+                </div>
+                <div style="height: 77%; width: 100%">
+                    <Table :data="data" :height="30" :front_size="10" />
+                </div>
+            </div>
+            <div class="bottom_left">
+                <div class="bottom_left_title">
+                    <strong style="
+              margin-right: 20%;
+              color: orange;
+              font-style: italic;
+              text-shadow: 2px 2px 4px #000000;
+              font-size: 17px;
+            ">实时监控二</strong>
+                </div>
+                <div style="height: 77%; width: 100%; padding: 0; display: flex">
+                    <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId2" :clientId="utils.clientId"
+                        :height="100" />
+                </div>
+            </div>
+            <div class="bottom_right">
+                <div class="bottom_right_title">
+                    <strong style="
+              margin-left: 20%;
+              color: orange;
+              font-style: italic;
+              text-shadow: 2px 2px 4px #000000;
+              font-size: 17px;
+            ">实时地理位置</strong>
+                </div>
+                <div style="height: 77%; width: 100%">
+                    <MapContainer></MapContainer>
+                </div>
+            </div>
+        </dv-border-box12>
     </div>
     <div class="bottom">
-        <div class="bottomleft">
-            
-                <MapContainer></MapContainer>
-            
-        </div>
-        <div class="bottomright">
-            <dv-border-box8>
-                <!-- <Video :signalingUrl="utils.signalingUrl" :roomId="utils.roomId2" :clientId="utils.clientId" /> -->
-            </dv-border-box8>
-        </div>
-    </div>
-    <div class="middle">
-        <dv-border-box12>
-            <chart_down></chart_down>
-        </dv-border-box12>
+        <dv-border-box10 style="display: flex; flex-direction: row">
+            <div class="top-title">
+                <strong style="
+            color: orange;
+            font-style: italic;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 17px;
+          ">草原生物量信息</strong>
+            </div>
+            <div class="bottom-center">
+                <group1></group1>
+            </div>
+        </dv-border-box10>
     </div>
 </template>
 
 <style scoped lang="css">
 .top {
     display: flex;
+    position: relative;
+    flex-direction: column;
     width: 100%;
-    height: 35%;
-    background-color: transparent;
+    height: 70%;
+
+    .top_left {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0, 0);
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 50%;
+        padding: 22px 30px 0px 30px;
+
+        .top_left_title {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-image: url("@/assets/title2.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 23%;
+            width: 100%;
+        }
+    }
+
+    .top_right {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgb(0, 0, 0, 0);
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        padding: 22px 30px 0px 30px;
+
+        .top_right_title {
+            display: flex;
+            align-items: center;
+            /* justify-content: flex-end;  */
+            background-image: url("@/assets/title1.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 23%;
+            width: 100%;
+        }
+    }
+
+    .bottom_left {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0, 0);
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 50%;
+        padding: 0px 30px 22px 30px;
+
+        .bottom_left_title {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-image: url("@/assets/title2.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 23%;
+            width: 100%;
+        }
+    }
+
+    .bottom_right {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0, 0);
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        padding: 0px 30px 22px 30px;
+
+        .bottom_right_title {
+            display: flex;
+            align-items: center;
+            /* justify-content: flex-end;  */
+            background-image: url("@/assets/title1.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 23%;
+            width: 100%;
+        }
+    }
 }
-.topleft {
-    flex: 1; /* 左侧区域占据一半空间 */
-    background-color: transparent;
-}
-.topright {
-    flex: 1; /* 右侧区域占据一半空间 */
-    background-color: transparent;
-}
-.middle {
-    width: 100%;
-    height: 20%;
-    background-color: transparent; /* 设置背景颜色为透明 */
-}
+
 .bottom {
-    display: flex; /* 使用 Flexbox 布局 */
+    display: flex;
+    position: relative;
     width: 100%;
-    height: 45%;
-}
-.bottomleft {
-    flex: 1; /* 左侧区域占据一半空间 */
-    background-color: transparent;
-}
-.bottomright {
-    flex: 1; /* 右侧区域占据一半空间 */
-    background-color: transparent;
+    height: 30%;
+    padding: 5px;
+    background-color: rgb(0, 0, 0, 0);
+
+    .top-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("@/assets/title3.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 20%;
+        width: 100%;
+    }
+
+    .bottom-center {
+        display: flex;
+        height: 80%;
+    }
 }
 </style>

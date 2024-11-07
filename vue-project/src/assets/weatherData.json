@@ -1,37 +1,15 @@
-[
-    {
-      "date": "温度",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "湿度",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "风速",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "风向",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "气压",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "光照",
-      "name": "Tom",
-      "address": "正常"
-    },
-    {
-      "date": "降雨量",
-      "name": "Tom",
-      "address": "正常"
-    }
-  ]
+{
+  "header": ["日期", "属性", "值"],
+  "data": [
+    ["温度", "Tom", "正常"],
+    ["湿度", "Tom", "正常"],
+    ["风速", "Tom", "正常"],
+    ["风向", "Tom", "正常"],
+    ["气压", "Tom", "正常"],
+    ["光照", "Tom", "正常"],
+    ["降雨量", "Tom", "正常"]
+  ],
+  "index": true,
+  "columnWidth": [50],
+  "align": ["center"]
+}
